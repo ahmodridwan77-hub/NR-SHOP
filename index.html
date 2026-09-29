@@ -1,1 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>NR SHOP</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#f5f6fa;
+  color:#111;
+}
+
+button{
+  cursor:pointer;
+}
+
+header{
+  background:#111;
+  color:white;
+  padding:12px 18px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.logo-img{
+  width:48px;
+  height:48px;
+  object-fit:contain;
+  border-radius:8px;
+  background:white;
+}
+
+.logo{
+  font-size:23px;
+  font-weight:bold;
+  margin-right:auto;
+}
+
+.header-btn{
+  border:0;
+  background:white;
+  color:#111;
+  padding:9px 12px;
+  border-radius:20px;
+  font-weight:bold;
+}
+
+.cart-count{
+  background:red;
+  color:white;
+  padding:2px 7px;
+  border-radius:20px;
+  font-size:12px;
+}
+
+.hero{
+  background:linear-gradient(135deg,#111,#333);
+  color:white;
+  text-align:center;
+  padding:55px 20px;
+}
+
+.hero h1{
+  font-size:38px;
+  margin-bottom:10px;
+}
+
+.hero p{
+  font-size:16px;
+  margin-bottom:25px;
+}
+
+.shop-btn{
+  display:inline-block;
+  background:white;
+  color:#111;
+  padding:12px 25px;
+  border-radius:25px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.section{
+  padding:30px 18px;
+}
+
+.section h2{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+  max-width:1100px;
+  margin:auto;
+}
+
+.product{
+  background:white;
+  border-radius:12px;
+  padding:12px;
+  box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+.product img{
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  border-radius:8px;
+  background:#ddd;
+}
+
+.product h3{
+  margin:10px 0 5px;
+  font-size:16px;
+}
+
+.price{
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+.buy{
+  width:100%;
+  border:0;
+  padding:10px;
+  background:#111;
+  color:white;
+  border-radius:7px;
+  font-weight:bold;
+}
+
+.buy.order{
+  background:#198754;
+  margin-top:7px;
+}
+
+.info{
+  background:white;
+  margin:20px 18px;
+  padding:20px;
+  border-radius:12px;
+  text-align:center;
+}
+
+footer{
+  background:#111;
+  color:white;
+  text-align:center;
+  padding:25px;
+  margin-top:30px;
+}
+
+/* MODAL */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.65);
+  z-index:1000;
+  padding:20px;
+  overflow:auto;
+}
+
+.modal-box{
+  background:white;
+  max-width:600px;
+  margin:30px auto;
+  padding:22px;
+  border-radius:15px;
+  position:relative;
+}
+
+.modal-box.large{
+  max-width:1000px;
+}
+
+.close{
+  position:absolute;
+  right:15px;
+  top:10px;
+  border:0;
+  background:none;
+  font-size:30px;
+}
+
+.form-group{
+  margin:12px 0;
+}
+
+.form-group label{
+  display:block;
+  font-weight:bold;
+  margin-bottom:5px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+  width:100%;
+  padding:11px;
+  border:1px solid #ccc;
+  border-radius:8px;
+}
+
+.primary{
+  width:100%;
+  padding:12px;
+  border:0;
+  border-radius:8px;
+  background:#111;
+  color:white;
+  font-weight:bold;
+}
+
+.secondary{
+  padding:9px 13px;
+  border:0;
+  border-radius:8px;
+  background:#eee;
+}
+
+.cart-item{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  border-bottom:1px solid #ddd;
+  padding:12px 0;
+}
+
+.cart-item img{
+  width:65px;
+  height:65px;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+.cart-info{
+  flex:1;
+}
+
+.qty-btn{
+  border:0;
+  padding:5px 10px;
+  margin:3px;
+  border-radius:5px;
+}
+
+.total{
+  font-size:20px;
+  font-weight:bold;
+  margin:15px 0;
+}
+
+.card{
+  background:#f7f7f7;
+  padding:14px;
+  border-radius:10px;
+  margin:10px 0;
+}
+
+.order-item{
+  border-bottom:1px solid #ddd;
+  padding:8px 0;
+}
+
+.tabs{
+  display:flex;
+  gap:8px;
+  margin:15px 0;
+}
+
+.tabs button{
+  flex:1;
+}
+
+.admin-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:13px;
+}
+
+.admin-table th,
+.admin-table td{
+  border:1px solid #ddd;
+  padding:8px;
+  text-align:left;
+  vertical-align:top;
+}
+
+.admin-table select{
+  padding:6px;
+}
+
+@media(max-width:600px){
+
+  .products{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .hero h1{
+    font-size:30px;
+  }
+
+  .logo{
+    font-size:18px;
+  }
+
+  .header-btn{
+    padding:8px;
+    font-size:12px;
+  }
+
+  .product img{
+    height:140px;
+  }
+
+  .admin-table{
+    font-size:10px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+<img
+src="Picsart_26-09-29_12-53-35-433.png"
+alt="NR SHOP Logo"
+class="logo-img"
+>
+
+<div class="logo">
+NR SHOP
+</div>
+
+<button class="header-btn" onclick="openProfile()">
+👤 <span id="userName">Login</span>
+</button>
+
+<button class="header-btn" onclick="openCart()">
+🛒 Cart
+<span class="cart-count" id="cartCount">0</span>
+</button>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<h1>Welcome to NR SHOP</h1>
+
+<p>Your Trusted Online Shop</p>
+
+<a href="#products" class="shop-btn">
+Shop Now
+</a>
+
+</section>
+
+
+<!-- PRODUCTS -->
+
+<section class="section" id="products">
+
+<h2>
+Featured Products
+</h2>
+
+<div class="products">
+
+
+<!-- PRODUCT 1 -->
+
+<div class="product">
+
+<img src="1788515921_L_1.jpeg">
+
+<h3>
+Digital Printed Three Piece
+</h3>
+
+<div class="price">
+৳ 1200
+</div>
+
+<button
+class="buy"
+onclick="addToCart(1)"
+>
+🛒 Add to Cart
+</button>
+
+<button
+class="buy order"
+onclick="buyNow(1)"
+>
+Order Now
+</button>
+
+</div>
+
+
+<!-- PRODUCT 2 -->
+
+<div class="product">
+
+<img src="1788516286_L_1.jpeg">
+
+<h3>
+Digital Printed Three Pieces
+</h3>
+
+<div class="price">
+৳ 1200
+</div>
+
+<button
+class="buy"
+onclick="addToCart(2)"
+>
+🛒 Add to Cart
+</button>
+
+<button
+class="buy order"
+onclick="buyNow(2)"
+>
+Order Now
+</button>
+
+</div>
+
+
+<!-- PRODUCT 3 -->
+
+<div class="product">
+
+<img src="1790249695_L_4.jpeg">
+
+<h3>
+Embroidery Readymade Three Piece
+</h3>
+
+<div class="price">
+৳ 1400
+</div>
+
+<button
+class="buy"
+onclick="addToCart(3)"
+>
+🛒 Add to Cart
+</button>
+
+<button
+class="buy order"
+onclick="buyNow(3)"
+>
+Order Now
+</button>
+
+</div>
+
+
+<!-- PRODUCT 4 -->
+
+<div class="product">
+
+<img src="1789811938_L_9.jpeg">
+
+<h3>
+Skin Print Three Piece
+</h3>
+
+<div class="price">
+৳ 750
+</div>
+
+<button
+class="buy"
+onclick="addToCart(4)"
+>
+🛒 Add to Cart
+</button>
+
+<button
+class="buy order"
+onclick="buyNow(4)"
+>
+Order Now
+</button>
+
+</div>
+
+
+<!-- PRODUCT 5 -->
+
+<div class="product">
+
+<img src="1786431373_L_4.jpeg">
+
+<h3>
+Exclusive Garara Dress
+</h3>
+
+<div class="price">
+৳ 1400
+</div>
+
+<button
+class="buy"
+onclick="addToCart(5)"
+>
+🛒 Add to Cart
+</button>
+
+<button
+class="buy order"
+onclick="buyNow(5)"
+>
+Order Now
+</button>
+
+</div>
+
+
+<!-- PRODUCT 6 -->
+
+<div class="product">
+
+<img src="1786290399_L_3.jpeg">
+
+<h3>
+Digital Print Three Piece
+</h3>
+
+<div class="price">
+৳ 1200
+</div>
+
+<button
+class="buy"
+onclick="addToCart(6)"
+>
+🛒 Add to Cart
+</button>
+
+<button
+class="buy order"
+onclick="buyNow(6)"
+>
+Order Now
+</button>
+
+</div>
+
+
+<!-- PRODUCT 7 -->
+
+<div class="product">
+
+<img src="1783945910_L_2.jpeg">
+
+<h3>
+Digital Print Three Piece
+</h3>
+
+<div class="price">
+৳ 1200
+</div>
+
+<button
+class="buy"
+onclick="addToCart(7)"
+>
+🛒 Add to Cart
+</button>
+
+<button
+class="buy order"
+onclick="buyNow(7)"
+>
+Order Now
+</button>
+
+</div>
+
+
+<!-- PRODUCT 8 -->
+
+<div class="product">
+
+<img src="product8.jpg">
+
+<h3>
+Product Name 8
+</h3>
+
+<div class="price">
+৳ 750
+</div>
+
+<button
+class="buy"
+onclick="addToCart(8)"
+>
+🛒 Add to Cart
+</button>
+
+<button
+class="buy order"
+onclick="buyNow(8)"
+>
+Order Now
+</button>
+
+</div>
+
+
+<!-- PRODUCT 9 -->
+
+<div class="product">
+
+<img src="product9.jpg">
+
+<h3>
+Product Name 9
+</h3>
+
+<div class="price">
+৳ 750
+</div>
+
+<button
+class="buy"
+onclick="addToCart(9)"
+>
+🛒 Add to Cart
+</button>
+
+<button
+class="buy order"
+onclick="buyNow(9)"
+>
+Order Now
+</button>
+
+</div>
+
+
+<!-- PRODUCT 10 -->
+
+<div class="product">
+
+<img src="product10.jpg">
+
+<h3>
+Product Name 10
+</h3>
+
+<div class="price">
+৳ 750
+</div>
+
+<button
+class="buy"
+onclick="addToCart(10)"
+>
+🛒 Add to Cart
+</button>
+
+<button
+class="buy order"
+onclick="buyNow(10)"
+>
+Order Now
+</button>
+
+</div>
+
+
+<!-- PRODUCT 11 -->
+
+<div class="product">
+
+<img src="product11.jpg">
+
+<h3>
+Product Name 11
+</h3>
+
+<div class="price">
+৳ 750
+</div>
+
+<button
+class="buy"
+onclick="addToCart(11)"
+>
+🛒 Add to Cart
+</button>
+
+<button
+class="buy order"
+onclick="buyNow(11)"
+>
+Order Now
+</button>
+
+</div>
+
+
+<!-- PRODUCT 12 -->
+
+<div class="product">
+
+<img src="product12.jpg">
+
+<h3>
+Product Name 12
+</h3>
+
+<div class="price">
+৳ 750
+</div>
+
+<button
+class="buy"
+onclick="addToCart(12)"
+>
+🛒 Add to Cart
+</button>
+
+<button
+class="buy order"
+onclick="buyNow(12)"
+>
+Order Now
+</button>
+
+</div>
+
+
+</div>
+</section>
+
+
+<!-- INFO -->
+
+<div class="info">
+
+<h3>
+📦 Cash on Delivery Available
+</h3>
+
+<p>
+Order করুন, পণ্য হাতে পেয়ে payment করুন।
+</p>
+
+</div>
+
+
+<div class="info">
+
+<h4>
+Considered goods for the way you live now.
+</h4>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+© 2026 NR SHOP
+</p>
+
+<p>
+Your Trusted Online Shop
+</p>
+
+<p>
+ahmodridwan77@gmail.com
+</p>
+
+<p>
++880 1607839035
+</p>
+
+<p>
+Dhaka, Bangladesh
+</p>
+
+<br>
+
+<button
+class="header-btn"
+onclick="openAdminLogin()"
+>
+🔐 Admin Login
+</button>
+
+</footer>
+
+
+
+<!-- ================= CART ================= -->
+
+<div
+class="modal"
+id="cartModal"
+>
+
+<div class="modal-box">
+
+<button
+class="close"
+onclick="closeModal('cartModal')"
+>
+×
+</button>
+
+<h2>
+🛒 My Cart
+</h2>
+
+<br>
+
+<div id="cartItems">
+</div>
+
+<div
+class="total"
+id="cartTotal"
+>
+Total: ৳ 0
+</div>
+
+<button
+class="primary"
+onclick="checkoutCart()"
+>
+Proceed to Order
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- ================= CUSTOMER PROFILE ================= -->
+
+<div
+class="modal"
+id="profileModal"
+>
+
+<div class="modal-box">
+
+<button
+class="close"
+onclick="closeModal('profileModal')"
+>
+×
+</button>
+
+<div id="profileContent">
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- ================= ORDER FORM ================= -->
+
+<div
+class="modal"
+id="orderModal"
+>
+
+<div class="modal-box">
+
+<button
+class="close"
+onclick="closeModal('orderModal')"
+>
+×
+</button>
+
+<h2>
+📦 Customer Details
+</h2>
+
+<p style="margin:10px 0 15px">
+অর্ডার সম্পন্ন করতে আপনার তথ্য দিন।
+</p>
+
+<div
+class="card"
+id="orderSummary"
+>
+</div>
+
+
+<form onsubmit="submitOrder(event)">
+
+<div class="form-group">
+
+<label>
+নাম *
+</label>
+
+<input
+id="customerName"
+required
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+মোবাইল নম্বর *
+</label>
+
+<input
+id="customerPhone"
+type="tel"
+required
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+ইমেইল
+</label>
+
+<input
+id="customerEmail"
+type="email"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+সম্পূর্ণ ঠিকানা *
+</label>
+
+<textarea
+id="customerAddress"
+rows="4"
+required
+></textarea>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Payment
+</label>
+
+<select id="payment">
+
+<option>
+Cash on Delivery
+</option>
+
+</select>
+
+</div>
+
+
+<button
+class="primary"
+>
+✅ Confirm Order
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+
+
+<!-- ================= ADMIN LOGIN ================= -->
+
+<div
+class="modal"
+id="adminLoginModal"
+>
+
+<div class="modal-box">
+
+<button
+class="close"
+onclick="closeModal('adminLoginModal')"
+>
+×
+</button>
+
+<h2>
+🔐 Admin Login
+</h2>
+
+<br>
+
+<p>
+Admin ID: <b>admin</b>
+</p>
+
+<p>
+Password: <b>NR@2026</b>
+</p>
+
+<br>
+
+
+<form onsubmit="adminLogin(event)">
+
+<div class="form-group">
+
+<label>
+Admin ID
+</label>
+
+<input
+id="adminId"
+required
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Password
+</label>
+
+<input
+id="adminPass"
+type="password"
+required
+>
+
+</div>
+
+
+<button
+class="primary"
+>
+Login
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+
+
+<!-- ================= ADMIN DASHBOARD ================= -->
+
+<div
+class="modal"
+id="adminModal"
+>
+
+<div class="modal-box large">
+
+<button
+class="close"
+onclick="closeModal('adminModal')"
+>
+×
+</button>
+
+<h2>
+👑 NR SHOP Admin Dashboard
+</h2>
+
+
+<div class="tabs">
+
+<button
+class="secondary"
+onclick="showAdminOrders()"
+>
+📦 Orders
+</button>
+
+<button
+class="secondary"
+onclick="showAdminCustomers()"
+>
+👥 Customers
+</button>
+
+</div>
+
+
+<div id="adminContent">
+</div>
+
+</div>
+
+</div>
+
+
+
+<script>
+
+/* ================= PRODUCTS ================= */
+
+const products = {
+
+1:{
+name:"Digital Printed Three Piece",
+price:1200,
+img:"1788515921_L_1.jpeg"
+},
+
+2:{
+name:"Digital Printed Three Pi
