@@ -1,27 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>NR SHOP</title>
 
 <!-- =========================
      EMAILJS
 ========================= -->
-<script type="text/javascript"
+
+<script
+type="text/javascript"
 src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
 </script>
 
 <script>
 (function(){
+
     emailjs.init({
-    publicKey: "syxkiqx8bykKLt8fdB"
-});
+        publicKey: "syxkiqx8bykKLt8fdB"
     });
+
 })();
 </script>
 
+
 <style>
+
+/* =========================
+   RESET
+========================= */
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -29,10 +40,16 @@ src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
     font-family:Arial,sans-serif;
 }
 
+
 body{
     background:#f5f5f5;
     color:#222;
 }
+
+
+/* =========================
+   HEADER
+========================= */
 
 header{
     background:#111;
@@ -46,11 +63,13 @@ header{
     z-index:1000;
 }
 
+
 .logo-area{
     display:flex;
     align-items:center;
     gap:10px;
 }
+
 
 .logo-area img{
     width:48px;
@@ -60,9 +79,11 @@ header{
     background:white;
 }
 
+
 .logo-area h2{
     font-size:22px;
 }
+
 
 #customerNameDisplay{
     font-size:13px;
@@ -70,10 +91,12 @@ header{
     margin-left:4px;
 }
 
+
 .header-buttons{
     display:flex;
     gap:7px;
 }
+
 
 .header-buttons button{
     border:0;
@@ -86,6 +109,7 @@ header{
     touch-action:manipulation;
 }
 
+
 .cart-count{
     background:red;
     color:white;
@@ -94,6 +118,11 @@ header{
     font-size:11px;
 }
 
+
+/* =========================
+   HERO
+========================= */
+
 .hero{
     background:linear-gradient(135deg,#111,#444);
     color:white;
@@ -101,14 +130,21 @@ header{
     padding:45px 15px;
 }
 
+
 .hero h1{
     font-size:32px;
     margin-bottom:10px;
 }
 
+
 .hero p{
     color:#ddd;
 }
+
+
+/* =========================
+   CONTAINER
+========================= */
 
 .container{
     width:95%;
@@ -116,16 +152,25 @@ header{
     margin:25px auto;
 }
 
+
 .section-title{
     text-align:center;
     margin-bottom:20px;
 }
 
+
+/* =========================
+   PRODUCTS
+========================= */
+
 .products{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    grid-template-columns:
+    repeat(auto-fit,minmax(180px,1fr));
+
     gap:15px;
 }
+
 
 .product{
     background:white;
@@ -135,6 +180,7 @@ header{
     padding-bottom:12px;
 }
 
+
 .product img{
     width:100%;
     height:210px;
@@ -142,15 +188,18 @@ header{
     background:#eee;
 }
 
+
 .product-info{
     padding:12px;
 }
+
 
 .product-name{
     font-weight:bold;
     font-size:16px;
     margin-bottom:8px;
 }
+
 
 .price{
     color:#e53935;
@@ -159,10 +208,12 @@ header{
     margin-bottom:10px;
 }
 
+
 .product-buttons{
     display:flex;
     gap:7px;
 }
+
 
 .product-buttons button{
     flex:1;
@@ -174,15 +225,22 @@ header{
     touch-action:manipulation;
 }
 
+
 .add-btn{
     background:#111;
     color:white;
 }
 
+
 .order-btn{
     background:#ff9800;
     color:white;
 }
+
+
+/* =========================
+   INFO
+========================= */
 
 .info-box{
     background:white;
@@ -193,6 +251,11 @@ header{
     box-shadow:0 3px 10px rgba(0,0,0,.08);
 }
 
+
+/* =========================
+   FOOTER
+========================= */
+
 footer{
     margin-top:35px;
     background:#111;
@@ -201,13 +264,16 @@ footer{
     padding:25px 15px;
 }
 
+
 footer p{
     margin:7px 0;
 }
 
+
 .admin-link{
     margin-top:15px;
 }
+
 
 .admin-link button{
     background:#ff9800;
@@ -218,7 +284,10 @@ footer p{
     cursor:pointer;
 }
 
-/* MODAL */
+
+/* =========================
+   MODAL
+========================= */
 
 .modal{
     display:none;
@@ -230,11 +299,13 @@ footer p{
     overflow:auto;
 }
 
+
 .modal.show{
     display:flex;
     align-items:center;
     justify-content:center;
 }
+
 
 .modal-box{
     background:white;
@@ -247,9 +318,11 @@ footer p{
     position:relative;
 }
 
+
 .modal-box h2{
     margin-bottom:15px;
 }
+
 
 .close{
     position:absolute;
@@ -260,15 +333,22 @@ footer p{
     color:#777;
 }
 
+
+/* =========================
+   FORM
+========================= */
+
 .form-group{
     margin-bottom:12px;
 }
+
 
 .form-group label{
     display:block;
     font-weight:bold;
     margin-bottom:5px;
 }
+
 
 .form-group input,
 .form-group textarea,
@@ -280,10 +360,12 @@ footer p{
     font-size:15px;
 }
 
+
 .form-group textarea{
     min-height:80px;
     resize:vertical;
 }
+
 
 .submit-btn{
     width:100%;
@@ -297,6 +379,7 @@ footer p{
     margin-top:5px;
 }
 
+
 .secondary-btn{
     width:100%;
     background:#eee;
@@ -309,7 +392,10 @@ footer p{
     margin-top:8px;
 }
 
-/* CART */
+
+/* =========================
+   CART
+========================= */
 
 .cart-item{
     display:flex;
@@ -319,6 +405,7 @@ footer p{
     border-bottom:1px solid #ddd;
 }
 
+
 .cart-item img{
     width:60px;
     height:60px;
@@ -326,9 +413,11 @@ footer p{
     border-radius:7px;
 }
 
+
 .cart-info{
     flex:1;
 }
+
 
 .qty-buttons{
     display:flex;
@@ -336,6 +425,7 @@ footer p{
     gap:7px;
     margin-top:5px;
 }
+
 
 .qty-buttons button{
     border:0;
@@ -347,6 +437,7 @@ footer p{
     cursor:pointer;
 }
 
+
 .remove-btn{
     border:0;
     background:#e53935;
@@ -356,6 +447,7 @@ footer p{
     cursor:pointer;
 }
 
+
 .total{
     font-size:20px;
     font-weight:bold;
@@ -363,7 +455,10 @@ footer p{
     margin-top:15px;
 }
 
-/* PROFILE */
+
+/* =========================
+   PROFILE
+========================= */
 
 .profile-box{
     background:#f7f7f7;
@@ -372,12 +467,14 @@ footer p{
     margin-bottom:10px;
 }
 
+
 .order-card{
     border:1px solid #ddd;
     border-radius:9px;
     padding:12px;
     margin-bottom:10px;
 }
+
 
 .status{
     display:inline-block;
@@ -389,7 +486,10 @@ footer p{
     font-size:12px;
 }
 
-/* ADMIN */
+
+/* =========================
+   ADMIN
+========================= */
 
 .admin-order{
     border:1px solid #ddd;
@@ -398,13 +498,16 @@ footer p{
     margin-bottom:12px;
 }
 
+
 .admin-order h4{
     margin-bottom:7px;
 }
 
+
 .admin-order p{
     margin:4px 0;
 }
+
 
 .admin-order select{
     margin-top:8px;
@@ -412,7 +515,10 @@ footer p{
     border-radius:5px;
 }
 
-/* MOBILE */
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:600px){
 
@@ -420,87 +526,144 @@ footer p{
         font-size:18px;
     }
 
+
     .logo-area img{
         width:42px;
         height:42px;
     }
+
+
+    .header-buttons{
+        gap:4px;
+    }
+
 
     .header-buttons button{
         padding:8px;
         font-size:12px;
     }
 
+
     .hero h1{
         font-size:26px;
     }
+
 
     .products{
         grid-template-columns:repeat(2,1fr);
         gap:10px;
     }
 
+
     .product img{
         height:170px;
     }
+
 
     .product-info{
         padding:9px;
     }
 
+
     .product-name{
         font-size:14px;
     }
 
+
     .price{
         font-size:16px;
     }
+
 
     .product-buttons{
         flex-direction:column;
     }
 
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
 
-<div class="logo-area">
+    <div class="logo-area">
 
-    <img src="Picsart_26-09-29_12-53-35-433.png"
-         alt="NR SHOP Logo">
+        <img
+        src="Picsart_26-09-29_12-53-35-433.png"
+        alt="NR SHOP Logo">
 
-    <div>
-        <h2>NR SHOP</h2>
-        <span id="customerNameDisplay">Guest</span>
+        <div>
+
+            <h2>NR SHOP</h2>
+
+            <span id="customerNameDisplay">
+                Guest
+            </span>
+
+        </div>
+
     </div>
 
-</div>
 
-<div class="header-buttons">
+    <div class="header-buttons">
 
-    <button type="button" id="loginBtn">
-        👤 Login
-    </button>
+        <button
+        type="button"
+        id="loginBtn">
 
-    <button type="button" id="profileBtn">
-        Profile
-    </button>
+            👤 Login
 
-    <button type="button" id="cartBtn">
-        🛒 <span class="cart-count" id="cartCount">0</span>
-    </button>
+        </button>
 
-</div>
+
+        <button
+        type="button"
+        id="profileBtn">
+
+            Profile
+
+        </button>
+
+
+        <button
+        type="button"
+        id="cartBtn">
+
+            🛒
+
+            <span
+            class="cart-count"
+            id="cartCount">
+
+                0
+
+            </span>
+
+        </button>
+
+    </div>
 
 </header>
 
 
+<!-- =========================
+     HERO
+========================= -->
+
 <section class="hero">
 
-    <h1>Welcome To NR SHOP</h1>
+    <h1>
+        Welcome To NR SHOP
+    </h1>
 
     <p>
         Quality Products • Cash On Delivery
@@ -509,552 +672,666 @@ footer p{
 </section>
 
 
+<!-- =========================
+     PRODUCTS
+========================= -->
+
 <div class="container">
 
-<h2 class="section-title">
-    Our Products
-</h2>
-
-<div class="products" id="productContainer"></div>
+    <h2 class="section-title">
+        Our Products
+    </h2>
 
 
-<div class="info-box">
+    <div
+    class="products"
+    id="productContainer">
+    </div>
 
-    <h3>🚚 Cash On Delivery</h3>
 
-    <p>
-        Order your favourite products easily.
-    </p>
+    <div class="info-box">
 
-    <p>
-        We will contact you after receiving your order.
-    </p>
+        <h3>
+            🚚 Cash On Delivery
+        </h3>
+
+        <p>
+            Order your favourite products easily.
+        </p>
+
+        <p>
+            We will contact you after receiving your order.
+        </p>
+
+    </div>
 
 </div>
 
-</div>
 
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-<h3>NR SHOP</h3>
+    <h3>
+        NR SHOP
+    </h3>
 
-<p>📧 ahmodridwan77@gmail.com</p>
+    <p>
+        📧 ahmodridwan77@gmail.com
+    </p>
 
-<p>📞 +880 1607839035</p>
+    <p>
+        📞 +880 1607839035
+    </p>
 
-<p>📍 Dhaka, Bangladesh</p>
+    <p>
+        📍 Dhaka, Bangladesh
+    </p>
 
-<div class="admin-link">
 
-    <button type="button" id="adminLoginBtn">
-        🔐 Admin Login
-    </button>
+    <div class="admin-link">
 
-</div>
+        <button
+        type="button"
+        id="adminLoginBtn">
 
-<p style="margin-top:15px;">
-    © 2026 NR SHOP. All Rights Reserved.
-</p>
+            🔐 Admin Login
+
+        </button>
+
+    </div>
+
+
+    <p style="margin-top:15px;">
+
+        © 2026 NR SHOP. All Rights Reserved.
+
+    </p>
 
 </footer>
 
 
-<!-- CUSTOMER LOGIN MODAL -->
-
-<div class="modal" id="loginModal">
-
-<div class="modal-box">
-
-<span class="close" data-close="loginModal">
-    ×
-</span>
-
-<h2>👤 Customer Login</h2>
-
-<form id="loginForm">
-
-<div class="form-group">
-
-<label>
-    Customer Name
-</label>
-
-<input
-    type="text"
-    id="customerName"
-    required>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-    Phone Number
-</label>
-
-<input
-    type="tel"
-    id="customerPhone"
-    required>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-    Email
-</label>
-
-<input
-    type="email"
-    id="customerEmail">
-
-</div>
-
-
-<button class="submit-btn" type="submit">
-
-    Save Profile
-
-</button>
-
-</form>
-
-</div>
-
-</div>
-
-
-<!-- ORDER MODAL -->
-
-<div class="modal" id="orderModal">
-
-<div class="modal-box">
-
-<span class="close" data-close="orderModal">
-    ×
-</span>
-
-<h2>🛍️ Customer Details</h2>
-
-<form id="orderForm">
-
-<div class="form-group">
-
-<label>
-    Name
-</label>
-
-<input
-    type="text"
-    id="orderName"
-    required>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-    Phone Number
-</label>
-
-<input
-    type="tel"
-    id="orderPhone"
-    required>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-    Email
-</label>
-
-<input
-    type="email"
-    id="orderEmail">
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-    Address
-</label>
-
-<textarea
-    id="orderAddress"
-    required></textarea>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-    Product
-</label>
-
-<input
-    type="text"
-    id="orderProduct"
-    readonly>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-    Quantity
-</label>
-
-<input
-    type="number"
-    id="orderQuantity"
-    min="1"
-    value="1"
-    required>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-    Price
-</label>
-
-<input
-    type="text"
-    id="orderPrice"
-    readonly>
-
-</div>
-
-
-<button class="submit-btn" type="submit">
-
-    ✅ Confirm Order
-
-</button>
-
-</form>
-
-</div>
-
-</div>
-
-
-<!-- CART MODAL -->
-
-<div class="modal" id="cartModal">
-
-<div class="modal-box">
-
-<span class="close" data-close="cartModal">
-    ×
-</span>
-
-<h2>🛒 My Cart</h2>
-
-<div id="cartItems"></div>
-
-<div class="total">
-
-    Total: ৳<span id="cartTotal">0</span>
-
-</div>
-
-<button
-    class="submit-btn"
-    type="button"
-    id="cartOrderBtn">
-
-    Order Cart
-
-</button>
-
-</div>
-
-</div>
-
-
-<!-- PROFILE MODAL -->
-
-<div class="modal" id="profileModal">
-
-<div class="modal-box">
-
-<span class="close" data-close="profileModal">
-    ×
-</span>
-
-<h2>👤 My Profile</h2>
-
-<div id="profileContent"></div>
-
-<h3 style="margin:15px 0 10px;">
-    📦 My Orders
-</h3>
-
-<div id="myOrders"></div>
-
-<button
-    class="secondary-btn"
-    type="button"
-    id="logoutBtn">
-
-    Logout
-
-</button>
-
-</div>
-
-</div>
-
-
-<!-- ADMIN LOGIN -->
-
-<div class="modal" id="adminLoginModal">
-
-<div class="modal-box">
-
-<span class="close" data-close="adminLoginModal">
-    ×
-</span>
-
-<h2>🔐 Admin Login</h2>
-
-<form id="adminLoginForm">
-
-<div class="form-group">
-
-<label>
-    Admin ID
-</label>
-
-<input
-    type="text"
-    id="adminId"
-    placeholder="Enter Admin ID"
-    autocomplete="username"
-    required>
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-    Password
-</label>
-
-<input
-    type="password"
-    id="adminPassword"
-    placeholder="Enter Password"
-    autocomplete="current-password"
-    required>
-
-</div>
-
-
-<button class="submit-btn" type="submit">
-
-    Login
-
-</button>
-
-</form>
-
-</div>
-
-</div>
-
-
-<!-- ADMIN DASHBOARD -->
-
-<div class="modal" id="adminModal">
+<!-- =========================
+     CUSTOMER LOGIN MODAL
+========================= -->
 
 <div
+class="modal"
+id="loginModal">
+
+    <div class="modal-box">
+
+        <span
+        class="close"
+        data-close="loginModal">
+
+            ×
+
+        </span>
+
+
+        <h2>
+            👤 Customer Login
+        </h2>
+
+
+        <form id="loginForm">
+
+            <div class="form-group">
+
+                <label>
+                    Customer Name
+                </label>
+
+                <input
+                type="text"
+                id="customerName"
+                required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Phone Number
+                </label>
+
+                <input
+                type="tel"
+                id="customerPhone"
+                required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Email
+                </label>
+
+                <input
+                type="email"
+                id="customerEmail">
+
+            </div>
+
+
+            <button
+            class="submit-btn"
+            type="submit">
+
+                Save Profile
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     ORDER MODAL
+========================= -->
+
+<div
+class="modal"
+id="orderModal">
+
+    <div class="modal-box">
+
+        <span
+        class="close"
+        data-close="orderModal">
+
+            ×
+
+        </span>
+
+
+        <h2>
+            🛍️ Customer Details
+        </h2>
+
+
+        <form id="orderForm">
+
+            <div class="form-group">
+
+                <label>
+                    Name
+                </label>
+
+                <input
+                type="text"
+                id="orderName"
+                required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Phone Number
+                </label>
+
+                <input
+                type="tel"
+                id="orderPhone"
+                required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Email
+                </label>
+
+                <input
+                type="email"
+                id="orderEmail">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Address
+                </label>
+
+                <textarea
+                id="orderAddress"
+                required></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Product
+                </label>
+
+                <input
+                type="text"
+                id="orderProduct"
+                readonly>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Quantity
+                </label>
+
+                <input
+                type="number"
+                id="orderQuantity"
+                min="1"
+                value="1"
+                required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Price
+                </label>
+
+                <input
+                type="text"
+                id="orderPrice"
+                readonly>
+
+            </div>
+
+
+            <button
+            class="submit-btn"
+            type="submit"
+            id="confirmOrderBtn">
+
+                ✅ Confirm Order
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     CART MODAL
+========================= -->
+
+<div
+class="modal"
+id="cartModal">
+
+    <div class="modal-box">
+
+        <span
+        class="close"
+        data-close="cartModal">
+
+            ×
+
+        </span>
+
+
+        <h2>
+            🛒 My Cart
+        </h2>
+
+
+        <div id="cartItems"></div>
+
+
+        <div class="total">
+
+            Total:
+            ৳<span id="cartTotal">0</span>
+
+        </div>
+
+
+        <button
+        class="submit-btn"
+        type="button"
+        id="cartOrderBtn">
+
+            Order Cart
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     PROFILE MODAL
+========================= -->
+
+<div
+class="modal"
+id="profileModal">
+
+    <div class="modal-box">
+
+        <span
+        class="close"
+        data-close="profileModal">
+
+            ×
+
+        </span>
+
+
+        <h2>
+            👤 My Profile
+        </h2>
+
+
+        <div id="profileContent"></div>
+
+
+        <h3 style="margin:15px 0 10px;">
+
+            📦 My Orders
+
+        </h3>
+
+
+        <div id="myOrders"></div>
+
+
+        <button
+        class="secondary-btn"
+        type="button"
+        id="logoutBtn">
+
+            Logout
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     ADMIN LOGIN
+========================= -->
+
+<div
+class="modal"
+id="adminLoginModal">
+
+    <div class="modal-box">
+
+        <span
+        class="close"
+        data-close="adminLoginModal">
+
+            ×
+
+        </span>
+
+
+        <h2>
+            🔐 Admin Login
+        </h2>
+
+
+        <form id="adminLoginForm">
+
+            <div class="form-group">
+
+                <label>
+                    Admin ID
+                </label>
+
+                <input
+                type="text"
+                id="adminId"
+                placeholder="Enter Admin ID"
+                autocomplete="username"
+                required>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Password
+                </label>
+
+                <input
+                type="password"
+                id="adminPassword"
+                placeholder="Enter Password"
+                autocomplete="current-password"
+                required>
+
+            </div>
+
+
+            <button
+            class="submit-btn"
+            type="submit">
+
+                Login
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     ADMIN DASHBOARD
+========================= -->
+
+<div
+class="modal"
+id="adminModal">
+
+    <div
     class="modal-box"
     style="max-width:800px;">
 
-<span class="close" data-close="adminModal">
-    ×
-</span>
+        <span
+        class="close"
+        data-close="adminModal">
 
-<h2>🔐 Admin Dashboard</h2>
+            ×
 
-
-<div class="profile-box">
-
-    <b>Total Customers:</b>
-
-    <span id="totalCustomers">
-        0
-    </span>
-
-</div>
+        </span>
 
 
-<div class="profile-box">
-
-    <b>Total Orders:</b>
-
-    <span id="totalOrders">
-        0
-    </span>
-
-</div>
+        <h2>
+            🔐 Admin Dashboard
+        </h2>
 
 
-<h3 style="margin:15px 0 10px;">
-    📦 All Orders
-</h3>
+        <div class="profile-box">
 
-<div id="allOrders"></div>
+            <b>
+                Total Customers:
+            </b>
+
+            <span id="totalCustomers">
+                0
+            </span>
+
+        </div>
 
 
-<button
-    class="secondary-btn"
-    type="button"
-    id="adminLogoutBtn">
+        <div class="profile-box">
 
-    Admin Logout
+            <b>
+                Total Orders:
+            </b>
 
-</button>
+            <span id="totalOrders">
+                0
+            </span>
 
-</div>
+        </div>
+
+
+        <h3 style="margin:15px 0 10px;">
+
+            📦 All Orders
+
+        </h3>
+
+
+        <div id="allOrders"></div>
+
+
+        <button
+        class="secondary-btn"
+        type="button"
+        id="adminLogoutBtn">
+
+            Admin Logout
+
+        </button>
+
+    </div>
 
 </div>
 
 
 <script>
 
-/* =========================
+/* =========================================================
    EMAILJS SETTINGS
-========================= */
-
-/*
-   IMPORTANT:
-
-   নিচের ৩টি জায়গায় EmailJS থেকে পাওয়া
-   নিজের information বসাবে।
-
-   YOUR_PUBLIC_KEY
-   YOUR_SERVICE_ID
-   YOUR_TEMPLATE_ID
-*/
-
+========================================================= */
 
 const EMAILJS_SERVICE_ID =
 "ahmodridwan77@gmail.com";
+
 
 const EMAILJS_TEMPLATE_ID =
 "template_oylovbh";
 
 
-/* =========================
+/* =========================================================
    PRODUCT LIST
-========================= */
+========================================================= */
 
 const products = [
 
-{
-    id:1,
-    name:"Product 1",
-    price:500,
-    image:"1788515921_L_1.jpeg"
-},
+    {
+        id:1,
+        name:"Product 1",
+        price:500,
+        image:"1788515921_L_1.jpeg"
+    },
 
-{
-    id:2,
-    name:"Product 2",
-    price:700,
-    image:"1788516286_L_1.jpeg"
-},
+    {
+        id:2,
+        name:"Product 2",
+        price:700,
+        image:"1788516286_L_1.jpeg"
+    },
 
-{
-    id:3,
-    name:"Product 3",
-    price:850,
-    image:"1790249695_L_4.jpeg"
-},
+    {
+        id:3,
+        name:"Product 3",
+        price:850,
+        image:"1790249695_L_4.jpeg"
+    },
 
-{
-    id:4,
-    name:"Product 4",
-    price:950,
-    image:"1789811938_L_9.jpeg"
-},
+    {
+        id:4,
+        name:"Product 4",
+        price:950,
+        image:"1789811938_L_9.jpeg"
+    },
 
-{
-    id:5,
-    name:"Product 5",
-    price:650,
-    image:"1786431373_L_4.jpeg"
-},
+    {
+        id:5,
+        name:"Product 5",
+        price:650,
+        image:"1786431373_L_4.jpeg"
+    },
 
-{
-    id:6,
-    name:"Product 6",
-    price:750,
-    image:"1786290399_L_3.jpeg"
-},
+    {
+        id:6,
+        name:"Product 6",
+        price:750,
+        image:"1786290399_L_3.jpeg"
+    },
 
-{
-    id:7,
-    name:"Product 7",
-    price:900,
-    image:"1783945910_L_2.jpeg"
-},
+    {
+        id:7,
+        name:"Product 7",
+        price:900,
+        image:"1783945910_L_2.jpeg"
+    },
 
-{
-    id:8,
-    name:"Product 8",
-    price:550,
-    image:"product8.jpg"
-},
+    {
+        id:8,
+        name:"Product 8",
+        price:550,
+        image:"product8.jpg"
+    },
 
-{
-    id:9,
-    name:"Product 9",
-    price:600,
-    image:"product9.jpg"
-},
+    {
+        id:9,
+        name:"Product 9",
+        price:600,
+        image:"product9.jpg"
+    },
 
-{
-    id:10,
-    name:"Product 10",
-    price:1000,
-    image:"product10.jpg"
-}
+    {
+        id:10,
+        name:"Product 10",
+        price:1000,
+        image:"product10.jpg"
+    }
 
 ];
 
 
-/* =========================
+/* =========================================================
    STORAGE
-========================= */
+========================================================= */
 
 let cart =
 JSON.parse(
     localStorage.getItem("nr_cart") || "[]"
 );
 
+
 let customer =
 JSON.parse(
     localStorage.getItem("nr_customer") || "null"
 );
+
 
 let orders =
 JSON.parse(
@@ -1062,9 +1339,9 @@ JSON.parse(
 );
 
 
-/* =========================
-   STORAGE FUNCTIONS
-========================= */
+/* =========================================================
+   SAVE FUNCTIONS
+========================================================= */
 
 function saveCart(){
 
@@ -1096,9 +1373,9 @@ function saveOrders(){
 }
 
 
-/* =========================
-   MODAL FUNCTIONS
-========================= */
+/* =========================================================
+   MODALS
+========================================================= */
 
 function openModal(id){
 
@@ -1128,9 +1405,9 @@ function closeModal(id){
 }
 
 
-/* =========================
+/* =========================================================
    EMAIL NOTIFICATION
-========================= */
+========================================================= */
 
 async function sendOrderEmail(orderData){
 
@@ -1173,14 +1450,18 @@ async function sendOrderEmail(orderData){
 
 
         await emailjs.send(
+
             EMAILJS_SERVICE_ID,
+
             EMAILJS_TEMPLATE_ID,
+
             templateParams
+
         );
 
 
         console.log(
-            "Order email sent successfully."
+            "NR SHOP: Order email sent successfully."
         );
 
 
@@ -1189,7 +1470,7 @@ async function sendOrderEmail(orderData){
     }catch(error){
 
         console.error(
-            "EmailJS Error:",
+            "NR SHOP EmailJS Error:",
             error
         );
 
@@ -1201,9 +1482,9 @@ async function sendOrderEmail(orderData){
 }
 
 
-/* =========================
+/* =========================================================
    PRODUCTS
-========================= */
+========================================================= */
 
 function renderProducts(){
 
@@ -1211,6 +1492,7 @@ function renderProducts(){
     document.getElementById(
         "productContainer"
     );
+
 
     container.innerHTML = "";
 
@@ -1220,50 +1502,59 @@ function renderProducts(){
         const div =
         document.createElement("div");
 
-        div.className = "product";
+
+        div.className =
+        "product";
 
 
         div.innerHTML = `
 
-        <img
+            <img
             src="${product.image}"
             alt="${product.name}"
             onerror="this.src='https://via.placeholder.com/400x400?text=NR+SHOP'">
 
-        <div class="product-info">
 
-            <div class="product-name">
-                ${product.name}
-            </div>
+            <div class="product-info">
 
-            <div class="price">
-                ৳${product.price}
-            </div>
+                <div class="product-name">
 
-            <div class="product-buttons">
+                    ${product.name}
 
-                <button
+                </div>
+
+
+                <div class="price">
+
+                    ৳${product.price}
+
+                </div>
+
+
+                <div class="product-buttons">
+
+                    <button
                     type="button"
                     class="add-btn"
                     data-add="${product.id}">
 
-                    Add To Cart
+                        Add To Cart
 
-                </button>
+                    </button>
 
 
-                <button
+                    <button
                     type="button"
                     class="order-btn"
                     data-order="${product.id}">
 
-                    Order Now
+                        Order Now
 
-                </button>
+                    </button>
+
+                </div>
 
             </div>
-
-        </div>
 
         `;
 
@@ -1282,7 +1573,10 @@ function renderProducts(){
             function(){
 
                 const id =
-                Number(this.dataset.add);
+                Number(
+                    this.dataset.add
+                );
+
 
                 addToCart(id);
 
@@ -1301,7 +1595,10 @@ function renderProducts(){
             function(){
 
                 const id =
-                Number(this.dataset.order);
+                Number(
+                    this.dataset.order
+                );
+
 
                 openOrderForm(id);
 
@@ -1313,9 +1610,9 @@ function renderProducts(){
 }
 
 
-/* =========================
+/* =========================================================
    CART
-========================= */
+========================================================= */
 
 function addToCart(productId){
 
@@ -1324,7 +1621,12 @@ function addToCart(productId){
         p => p.id === productId
     );
 
-    if(!product) return;
+
+    if(!product){
+
+        return;
+
+    }
 
 
     const existing =
@@ -1341,15 +1643,20 @@ function addToCart(productId){
 
         cart.push({
 
-            id:product.id,
+            id:
+            product.id,
 
-            name:product.name,
+            name:
+            product.name,
 
-            price:product.price,
+            price:
+            product.price,
 
-            image:product.image,
+            image:
+            product.image,
 
-            quantity:1
+            quantity:
+            1
 
         });
 
@@ -1374,7 +1681,7 @@ function updateCartCount(){
     const count =
     cart.reduce(
         (sum,item) =>
-        sum + item.quantity,
+        sum + Number(item.quantity),
         0
     );
 
@@ -1393,6 +1700,7 @@ function renderCart(){
         "cartItems"
     );
 
+
     container.innerHTML = "";
 
 
@@ -1401,9 +1709,11 @@ function renderCart(){
         container.innerHTML =
         "<p style='text-align:center;padding:20px;'>Cart is empty.</p>";
 
+
         document.getElementById(
             "cartTotal"
         ).textContent = "0";
+
 
         return;
 
@@ -1416,65 +1726,74 @@ function renderCart(){
     cart.forEach(item => {
 
         total +=
-        item.price *
-        item.quantity;
+        Number(item.price) *
+        Number(item.quantity);
 
 
         const div =
         document.createElement("div");
 
-        div.className = "cart-item";
+
+        div.className =
+        "cart-item";
 
 
         div.innerHTML = `
 
-        <img
+            <img
             src="${item.image}"
+            alt="${item.name}"
             onerror="this.src='https://via.placeholder.com/100?text=NR'">
 
-        <div class="cart-info">
 
-            <b>${item.name}</b>
+            <div class="cart-info">
 
-            <div>
-                ৳${item.price}
-            </div>
+                <b>
+                    ${item.name}
+                </b>
 
-            <div class="qty-buttons">
+                <div>
+                    ৳${item.price}
+                </div>
 
-                <button
+
+                <div class="qty-buttons">
+
+                    <button
                     type="button"
                     data-minus="${item.id}">
 
-                    −
+                        −
 
-                </button>
+                    </button>
 
-                <span>
-                    ${item.quantity}
-                </span>
 
-                <button
+                    <span>
+                        ${item.quantity}
+                    </span>
+
+
+                    <button
                     type="button"
                     data-plus="${item.id}">
 
-                    +
+                        +
 
-                </button>
+                    </button>
+
+                </div>
 
             </div>
 
-        </div>
 
-
-        <button
+            <button
             type="button"
             class="remove-btn"
             data-remove="${item.id}">
 
-            Remove
+                Remove
 
-        </button>
+            </button>
 
         `;
 
@@ -1498,10 +1817,13 @@ function renderCart(){
             function(){
 
                 changeQuantity(
+
                     Number(
                         this.dataset.minus
                     ),
+
                     -1
+
                 );
 
             }
@@ -1519,10 +1841,13 @@ function renderCart(){
             function(){
 
                 changeQuantity(
+
                     Number(
                         this.dataset.plus
                     ),
+
                     1
+
                 );
 
             }
@@ -1560,10 +1885,17 @@ function changeQuantity(id,change){
         x => x.id === id
     );
 
-    if(!item) return;
+
+    if(!item){
+
+        return;
+
+    }
 
 
-    item.quantity += change;
+    item.quantity =
+    Number(item.quantity) +
+    Number(change);
 
 
     if(item.quantity <= 0){
@@ -1602,9 +1934,9 @@ function removeFromCart(id){
 }
 
 
-/* =========================
+/* =========================================================
    ORDER NOW
-========================= */
+========================================================= */
 
 let selectedProduct = null;
 
@@ -1617,7 +1949,11 @@ function openOrderForm(productId){
     );
 
 
-    if(!selectedProduct) return;
+    if(!selectedProduct){
+
+        return;
+
+    }
 
 
     document.getElementById(
@@ -1672,7 +2008,7 @@ function openOrderForm(productId){
 
     document.getElementById(
         "orderQuantity"
-    ).value = 1;
+    ).value = "1";
 
 
     document.getElementById(
@@ -1680,14 +2016,16 @@ function openOrderForm(productId){
     ).value = "";
 
 
-    openModal("orderModal");
+    openModal(
+        "orderModal"
+    );
 
 }
 
 
-/* =========================
+/* =========================================================
    ORDER FORM
-========================= */
+========================================================= */
 
 document
 .getElementById("orderForm")
@@ -1696,6 +2034,12 @@ document
     async function(e){
 
         e.preventDefault();
+
+
+        const button =
+        document.getElementById(
+            "confirmOrderBtn"
+        );
 
 
         const name =
@@ -1757,17 +2101,28 @@ document
         }
 
 
+        button.disabled = true;
+
+        button.textContent =
+        "Submitting Order...";
+
+
         const order = {
 
-            id:Date.now(),
+            id:
+            Date.now(),
 
-            customerName:name,
+            customerName:
+            name,
 
-            phone:phone,
+            phone:
+            phone,
 
-            email:email,
+            email:
+            email,
 
-            address:address,
+            address:
+            address,
 
             product:
             selectedProduct.name,
@@ -1778,13 +2133,15 @@ document
             price:
             selectedProduct.price,
 
-            quantity:quantity,
+            quantity:
+            quantity,
 
             total:
             selectedProduct.price *
             quantity,
 
-            status:"Pending",
+            status:
+            "Pending",
 
             date:
             new Date().toLocaleString()
@@ -1792,7 +2149,7 @@ document
         };
 
 
-        /* SAVE ORDER FIRST */
+        /* SAVE ORDER */
 
         orders.push(order);
 
@@ -1803,11 +2160,14 @@ document
 
         customer = {
 
-            name:name,
+            name:
+            name,
 
-            phone:phone,
+            phone:
+            phone,
 
-            email:email
+            email:
+            email
 
         };
 
@@ -1817,20 +2177,27 @@ document
         updateCustomerName();
 
 
-        closeModal("orderModal");
-
-        document
-        .getElementById("orderForm")
-        .reset();
-
-
-        alert(
-            "Order submitted successfully! " +
-            "We will contact you soon."
+        closeModal(
+            "orderModal"
         );
 
 
-        /* SEND EMAIL AFTER ORDER SAVED */
+        document
+        .getElementById(
+            "orderForm"
+        )
+        .reset();
+
+
+        selectedProduct = null;
+
+
+        alert(
+            "Order submitted successfully! We will contact you soon."
+        );
+
+
+        /* SEND EMAIL */
 
         const emailSent =
         await sendOrderEmail(order);
@@ -1839,24 +2206,30 @@ document
         if(emailSent){
 
             console.log(
-                "NR SHOP order notification sent."
+                "Order notification sent."
             );
 
         }else{
 
             console.log(
-                "Order saved, but email could not be sent."
+                "Order saved, but notification email failed."
             );
 
         }
+
+
+        button.disabled = false;
+
+        button.textContent =
+        "✅ Confirm Order";
 
     }
 );
 
 
-/* =========================
+/* =========================================================
    CUSTOMER LOGIN
-========================= */
+========================================================= */
 
 document
 .getElementById("loginBtn")
@@ -1870,7 +2243,9 @@ document
 
         }else{
 
-            openModal("loginModal");
+            openModal(
+                "loginModal"
+            );
 
         }
 
@@ -1911,7 +2286,17 @@ document
 
         updateCustomerName();
 
-        closeModal("loginModal");
+
+        closeModal(
+            "loginModal"
+        );
+
+
+        document
+        .getElementById(
+            "loginForm"
+        )
+        .reset();
 
 
         alert(
@@ -1945,9 +2330,9 @@ function updateCustomerName(){
 }
 
 
-/* =========================
+/* =========================================================
    PROFILE
-========================= */
+========================================================= */
 
 document
 .getElementById("profileBtn")
@@ -1965,7 +2350,9 @@ function openProfile(){
 
     if(!customer){
 
-        openModal("loginModal");
+        openModal(
+            "loginModal"
+        );
 
         return;
 
@@ -1983,12 +2370,14 @@ function openProfile(){
 
         </div>
 
+
         <div class="profile-box">
 
             <b>Phone:</b>
             ${customer.phone}
 
         </div>
+
 
         <div class="profile-box">
 
@@ -2029,7 +2418,10 @@ function openProfile(){
         .forEach(order => {
 
             const div =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
+
 
             div.className =
             "order-card";
@@ -2041,23 +2433,29 @@ function openProfile(){
                     ${order.product}
                 </b>
 
+
                 <p>
                     Quantity:
                     ${order.quantity}
                 </p>
+
 
                 <p>
                     Total:
                     ৳${order.total}
                 </p>
 
+
                 <p>
                     Date:
                     ${order.date}
                 </p>
 
+
                 <span class="status">
+
                     ${order.status}
+
                 </span>
 
             `;
@@ -2070,14 +2468,16 @@ function openProfile(){
     }
 
 
-    openModal("profileModal");
+    openModal(
+        "profileModal"
+    );
 
 }
 
 
-/* =========================
+/* =========================================================
    LOGOUT
-========================= */
+========================================================= */
 
 document
 .getElementById("logoutBtn")
@@ -2087,13 +2487,18 @@ document
 
         customer = null;
 
+
         localStorage.removeItem(
             "nr_customer"
         );
 
+
         updateCustomerName();
 
-        closeModal("profileModal");
+
+        closeModal(
+            "profileModal"
+        );
 
 
         alert(
@@ -2104,9 +2509,9 @@ document
 );
 
 
-/* =========================
+/* =========================================================
    CART BUTTON
-========================= */
+========================================================= */
 
 document
 .getElementById("cartBtn")
@@ -2116,15 +2521,17 @@ document
 
         renderCart();
 
-        openModal("cartModal");
+        openModal(
+            "cartModal"
+        );
 
     }
 );
 
 
-/* =========================
-   ORDER CART
-========================= */
+/* =========================================================
+   CART ORDER
+========================================================= */
 
 document
 .getElementById("cartOrderBtn")
@@ -2145,14 +2552,20 @@ document
 
         if(!customer){
 
-            closeModal("cartModal");
+            closeModal(
+                "cartModal"
+            );
 
-            openModal("loginModal");
+
+            openModal(
+                "loginModal"
+            );
 
 
             alert(
                 "Please login first to order from cart."
             );
+
 
             return;
 
@@ -2162,11 +2575,6 @@ document
         const orderDate =
         new Date().toLocaleString();
 
-
-        /*
-           Create separate orders
-           for each cart product.
-        */
 
         const cartOrders = [];
 
@@ -2216,21 +2624,23 @@ document
             };
 
 
-            orders.push(newOrder);
+            orders.push(
+                newOrder
+            );
 
-            cartOrders.push(newOrder);
+
+            cartOrders.push(
+                newOrder
+            );
 
         });
 
 
-        /* SAVE ORDERS */
-
         saveOrders();
 
 
-        /* CLEAR CART */
-
         cart = [];
+
 
         saveCart();
 
@@ -2238,7 +2648,9 @@ document
 
         renderCart();
 
-        closeModal("cartModal");
+        closeModal(
+            "cartModal"
+        );
 
 
         alert(
@@ -2247,9 +2659,8 @@ document
 
 
         /* =========================
-           SEND EMAIL NOTIFICATION
+           EMAIL
         ========================= */
-
 
         let productList = "";
 
@@ -2268,7 +2679,7 @@ document
 
 
             grandTotal +=
-            order.total;
+            Number(order.total);
 
         });
 
@@ -2340,9 +2751,9 @@ document
 );
 
 
-/* =========================
+/* =========================================================
    ADMIN LOGIN
-========================= */
+========================================================= */
 
 document
 .getElementById("adminLoginBtn")
@@ -2380,18 +2791,17 @@ document
 
 
         /*
-           CURRENT ADMIN LOGIN
+          TEMPORARY ADMIN LOGIN
 
-           ID:
-           admin
+          ID: admin
+          Password: NR@2026
 
-           Password:
-           NR@2026
+          IMPORTANT:
+          This is NOT secure for a real online store
+          because credentials are inside browser code.
 
-           NOTE:
-           এটি শুধু temporary/demo system.
-           Real security-এর জন্য Firebase
-           Authentication ব্যবহার করতে হবে।
+          For real security, Firebase Authentication
+          should be used.
         */
 
 
@@ -2403,6 +2813,14 @@ document
             closeModal(
                 "adminLoginModal"
             );
+
+
+            document
+            .getElementById(
+                "adminLoginForm"
+            )
+            .reset();
+
 
             openAdminDashboard();
 
@@ -2418,9 +2836,9 @@ document
 );
 
 
-/* =========================
+/* =========================================================
    ADMIN DASHBOARD
-========================= */
+========================================================= */
 
 function openAdminDashboard(){
 
@@ -2448,6 +2866,7 @@ function openAdminDashboard(){
 
     renderAdminOrders();
 
+
     openModal(
         "adminModal"
     );
@@ -2455,9 +2874,9 @@ function openAdminDashboard(){
 }
 
 
-/* =========================
+/* =========================================================
    ADMIN ORDERS
-========================= */
+========================================================= */
 
 function renderAdminOrders(){
 
@@ -2490,6 +2909,7 @@ function renderAdminOrders(){
             "div"
         );
 
+
         div.className =
         "admin-order";
 
@@ -2500,80 +2920,111 @@ function renderAdminOrders(){
                 📦 ${order.product}
             </h4>
 
+
             <p>
                 <b>Customer:</b>
                 ${order.customerName}
             </p>
+
 
             <p>
                 <b>Phone:</b>
                 ${order.phone}
             </p>
 
+
             <p>
                 <b>Email:</b>
                 ${order.email || "Not provided"}
             </p>
+
 
             <p>
                 <b>Address:</b>
                 ${order.address}
             </p>
 
+
             <p>
                 <b>Quantity:</b>
                 ${order.quantity}
             </p>
+
 
             <p>
                 <b>Total:</b>
                 ৳${order.total}
             </p>
 
+
             <p>
                 <b>Date:</b>
                 ${order.date}
             </p>
 
+
             <label>
+
                 <b>Status:</b>
+
             </label>
 
-            <select data-status="${order.id}">
+
+            <select
+            data-status="${order.id}">
 
                 <option
-                    ${order.status === "Pending"
-                    ? "selected"
-                    : ""}>
+                value="Pending"
+                ${order.status === "Pending"
+                ? "selected"
+                : ""}>
+
                     Pending
+
                 </option>
 
+
                 <option
-                    ${order.status === "Confirmed"
-                    ? "selected"
-                    : ""}>
+                value="Confirmed"
+                ${order.status === "Confirmed"
+                ? "selected"
+                : ""}>
+
                     Confirmed
+
                 </option>
 
+
                 <option
-                    ${order.status === "Processing"
-                    ? "selected"
-                    : ""}>
+                value="Processing"
+                ${order.status === "Processing"
+                ? "selected"
+                : ""}>
+
                     Processing
+
                 </option>
 
+
                 <option
-                    ${order.status === "Delivered"
-                    ? "selected"
-                    : ""}>
+                value="Delivered"
+                ${order.status === "Delivered"
+                ? "selected"
+                : ""}>
+
                     Delivered
+
                 </option>
 
+
                 <option
-                    ${order.status === "Cancelled"
-                    ? "selected"
-                    : ""}>
+                value="Cancelled"
+                ${order.status === "Cancelled"
+                ? "selected"
+                : ""}>
+
                     Cancelled
+
                 </option>
 
             </select>
@@ -2595,14 +3046,14 @@ function renderAdminOrders(){
             function(){
 
                 const id =
-                Number(
-                    this.dataset.status
-                );
+                this.dataset.status;
 
 
                 const order =
                 orders.find(
-                    o => o.id === id
+                    o =>
+                    String(o.id) ===
+                    String(id)
                 );
 
 
@@ -2611,12 +3062,16 @@ function renderAdminOrders(){
                     order.status =
                     this.value;
 
+
                     saveOrders();
 
 
                     alert(
                         "Order status updated."
                     );
+
+
+                    renderAdminOrders();
 
                 }
 
@@ -2628,9 +3083,9 @@ function renderAdminOrders(){
 }
 
 
-/* =========================
+/* =========================================================
    ADMIN LOGOUT
-========================= */
+========================================================= */
 
 document
 .getElementById("adminLogoutBtn")
@@ -2646,9 +3101,9 @@ document
 );
 
 
-/* =========================
+/* =========================================================
    CLOSE BUTTONS
-========================= */
+========================================================= */
 
 document
 .querySelectorAll("[data-close]")
@@ -2668,9 +3123,9 @@ document
 });
 
 
-/* =========================
+/* =========================================================
    CLICK OUTSIDE MODAL
-========================= */
+========================================================= */
 
 document
 .querySelectorAll(".modal")
@@ -2694,15 +3149,16 @@ document
 });
 
 
-/* =========================
+/* =========================================================
    INITIAL LOAD
-========================= */
+========================================================= */
 
 renderProducts();
 
 updateCartCount();
 
 updateCustomerName();
+
 
 </script>
 
