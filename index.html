@@ -1,1 +1,2709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NR SHOP</title>
 
+<!-- =========================
+     EMAILJS
+========================= -->
+<script type="text/javascript"
+src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+
+<script>
+(function(){
+    emailjs.init({
+        publicKey: "YOUR_PUBLIC_KEY"
+    });
+})();
+</script>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+    color:#222;
+}
+
+header{
+    background:#111;
+    color:white;
+    padding:12px 15px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo-area img{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    object-fit:cover;
+    background:white;
+}
+
+.logo-area h2{
+    font-size:22px;
+}
+
+#customerNameDisplay{
+    font-size:13px;
+    color:#ffd54a;
+    margin-left:4px;
+}
+
+.header-buttons{
+    display:flex;
+    gap:7px;
+}
+
+.header-buttons button{
+    border:0;
+    padding:9px 11px;
+    border-radius:7px;
+    cursor:pointer;
+    background:white;
+    color:#111;
+    font-weight:bold;
+    touch-action:manipulation;
+}
+
+.cart-count{
+    background:red;
+    color:white;
+    border-radius:20px;
+    padding:2px 6px;
+    font-size:11px;
+}
+
+.hero{
+    background:linear-gradient(135deg,#111,#444);
+    color:white;
+    text-align:center;
+    padding:45px 15px;
+}
+
+.hero h1{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.hero p{
+    color:#ddd;
+}
+
+.container{
+    width:95%;
+    max-width:1200px;
+    margin:25px auto;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
+}
+
+.product{
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 3px 12px rgba(0,0,0,.1);
+    padding-bottom:12px;
+}
+
+.product img{
+    width:100%;
+    height:210px;
+    object-fit:cover;
+    background:#eee;
+}
+
+.product-info{
+    padding:12px;
+}
+
+.product-name{
+    font-weight:bold;
+    font-size:16px;
+    margin-bottom:8px;
+}
+
+.price{
+    color:#e53935;
+    font-size:18px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.product-buttons{
+    display:flex;
+    gap:7px;
+}
+
+.product-buttons button{
+    flex:1;
+    border:0;
+    padding:10px 5px;
+    border-radius:7px;
+    cursor:pointer;
+    font-weight:bold;
+    touch-action:manipulation;
+}
+
+.add-btn{
+    background:#111;
+    color:white;
+}
+
+.order-btn{
+    background:#ff9800;
+    color:white;
+}
+
+.info-box{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    margin-top:25px;
+    text-align:center;
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+}
+
+footer{
+    margin-top:35px;
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:25px 15px;
+}
+
+footer p{
+    margin:7px 0;
+}
+
+.admin-link{
+    margin-top:15px;
+}
+
+.admin-link button{
+    background:#ff9800;
+    border:0;
+    padding:10px 20px;
+    border-radius:7px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* MODAL */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.65);
+    z-index:5000;
+    padding:15px;
+    overflow:auto;
+}
+
+.modal.show{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.modal-box{
+    background:white;
+    width:100%;
+    max-width:500px;
+    border-radius:14px;
+    padding:20px;
+    max-height:90vh;
+    overflow:auto;
+    position:relative;
+}
+
+.modal-box h2{
+    margin-bottom:15px;
+}
+
+.close{
+    position:absolute;
+    right:15px;
+    top:10px;
+    font-size:25px;
+    cursor:pointer;
+    color:#777;
+}
+
+.form-group{
+    margin-bottom:12px;
+}
+
+.form-group label{
+    display:block;
+    font-weight:bold;
+    margin-bottom:5px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+    width:100%;
+    padding:11px;
+    border:1px solid #ccc;
+    border-radius:7px;
+    font-size:15px;
+}
+
+.form-group textarea{
+    min-height:80px;
+    resize:vertical;
+}
+
+.submit-btn{
+    width:100%;
+    background:#111;
+    color:white;
+    border:0;
+    padding:12px;
+    border-radius:7px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:5px;
+}
+
+.secondary-btn{
+    width:100%;
+    background:#eee;
+    color:#111;
+    border:0;
+    padding:11px;
+    border-radius:7px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:8px;
+}
+
+/* CART */
+
+.cart-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 0;
+    border-bottom:1px solid #ddd;
+}
+
+.cart-item img{
+    width:60px;
+    height:60px;
+    object-fit:cover;
+    border-radius:7px;
+}
+
+.cart-info{
+    flex:1;
+}
+
+.qty-buttons{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    margin-top:5px;
+}
+
+.qty-buttons button{
+    border:0;
+    background:#111;
+    color:white;
+    width:27px;
+    height:27px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.remove-btn{
+    border:0;
+    background:#e53935;
+    color:white;
+    padding:7px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.total{
+    font-size:20px;
+    font-weight:bold;
+    text-align:right;
+    margin-top:15px;
+}
+
+/* PROFILE */
+
+.profile-box{
+    background:#f7f7f7;
+    padding:12px;
+    border-radius:8px;
+    margin-bottom:10px;
+}
+
+.order-card{
+    border:1px solid #ddd;
+    border-radius:9px;
+    padding:12px;
+    margin-bottom:10px;
+}
+
+.status{
+    display:inline-block;
+    margin-top:7px;
+    background:#ff9800;
+    color:white;
+    padding:5px 9px;
+    border-radius:5px;
+    font-size:12px;
+}
+
+/* ADMIN */
+
+.admin-order{
+    border:1px solid #ddd;
+    padding:12px;
+    border-radius:9px;
+    margin-bottom:12px;
+}
+
+.admin-order h4{
+    margin-bottom:7px;
+}
+
+.admin-order p{
+    margin:4px 0;
+}
+
+.admin-order select{
+    margin-top:8px;
+    padding:8px;
+    border-radius:5px;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .logo-area h2{
+        font-size:18px;
+    }
+
+    .logo-area img{
+        width:42px;
+        height:42px;
+    }
+
+    .header-buttons button{
+        padding:8px;
+        font-size:12px;
+    }
+
+    .hero h1{
+        font-size:26px;
+    }
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
+    }
+
+    .product img{
+        height:170px;
+    }
+
+    .product-info{
+        padding:9px;
+    }
+
+    .product-name{
+        font-size:14px;
+    }
+
+    .price{
+        font-size:16px;
+    }
+
+    .product-buttons{
+        flex-direction:column;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo-area">
+
+    <img src="Picsart_26-09-29_12-53-35-433.png"
+         alt="NR SHOP Logo">
+
+    <div>
+        <h2>NR SHOP</h2>
+        <span id="customerNameDisplay">Guest</span>
+    </div>
+
+</div>
+
+<div class="header-buttons">
+
+    <button type="button" id="loginBtn">
+        👤 Login
+    </button>
+
+    <button type="button" id="profileBtn">
+        Profile
+    </button>
+
+    <button type="button" id="cartBtn">
+        🛒 <span class="cart-count" id="cartCount">0</span>
+    </button>
+
+</div>
+
+</header>
+
+
+<section class="hero">
+
+    <h1>Welcome To NR SHOP</h1>
+
+    <p>
+        Quality Products • Cash On Delivery
+    </p>
+
+</section>
+
+
+<div class="container">
+
+<h2 class="section-title">
+    Our Products
+</h2>
+
+<div class="products" id="productContainer"></div>
+
+
+<div class="info-box">
+
+    <h3>🚚 Cash On Delivery</h3>
+
+    <p>
+        Order your favourite products easily.
+    </p>
+
+    <p>
+        We will contact you after receiving your order.
+    </p>
+
+</div>
+
+</div>
+
+
+<footer>
+
+<h3>NR SHOP</h3>
+
+<p>📧 ahmodridwan77@gmail.com</p>
+
+<p>📞 +880 1607839035</p>
+
+<p>📍 Dhaka, Bangladesh</p>
+
+<div class="admin-link">
+
+    <button type="button" id="adminLoginBtn">
+        🔐 Admin Login
+    </button>
+
+</div>
+
+<p style="margin-top:15px;">
+    © 2026 NR SHOP. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<!-- CUSTOMER LOGIN MODAL -->
+
+<div class="modal" id="loginModal">
+
+<div class="modal-box">
+
+<span class="close" data-close="loginModal">
+    ×
+</span>
+
+<h2>👤 Customer Login</h2>
+
+<form id="loginForm">
+
+<div class="form-group">
+
+<label>
+    Customer Name
+</label>
+
+<input
+    type="text"
+    id="customerName"
+    required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    Phone Number
+</label>
+
+<input
+    type="tel"
+    id="customerPhone"
+    required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    Email
+</label>
+
+<input
+    type="email"
+    id="customerEmail">
+
+</div>
+
+
+<button class="submit-btn" type="submit">
+
+    Save Profile
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+
+<!-- ORDER MODAL -->
+
+<div class="modal" id="orderModal">
+
+<div class="modal-box">
+
+<span class="close" data-close="orderModal">
+    ×
+</span>
+
+<h2>🛍️ Customer Details</h2>
+
+<form id="orderForm">
+
+<div class="form-group">
+
+<label>
+    Name
+</label>
+
+<input
+    type="text"
+    id="orderName"
+    required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    Phone Number
+</label>
+
+<input
+    type="tel"
+    id="orderPhone"
+    required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    Email
+</label>
+
+<input
+    type="email"
+    id="orderEmail">
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    Address
+</label>
+
+<textarea
+    id="orderAddress"
+    required></textarea>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    Product
+</label>
+
+<input
+    type="text"
+    id="orderProduct"
+    readonly>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    Quantity
+</label>
+
+<input
+    type="number"
+    id="orderQuantity"
+    min="1"
+    value="1"
+    required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    Price
+</label>
+
+<input
+    type="text"
+    id="orderPrice"
+    readonly>
+
+</div>
+
+
+<button class="submit-btn" type="submit">
+
+    ✅ Confirm Order
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+
+<!-- CART MODAL -->
+
+<div class="modal" id="cartModal">
+
+<div class="modal-box">
+
+<span class="close" data-close="cartModal">
+    ×
+</span>
+
+<h2>🛒 My Cart</h2>
+
+<div id="cartItems"></div>
+
+<div class="total">
+
+    Total: ৳<span id="cartTotal">0</span>
+
+</div>
+
+<button
+    class="submit-btn"
+    type="button"
+    id="cartOrderBtn">
+
+    Order Cart
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- PROFILE MODAL -->
+
+<div class="modal" id="profileModal">
+
+<div class="modal-box">
+
+<span class="close" data-close="profileModal">
+    ×
+</span>
+
+<h2>👤 My Profile</h2>
+
+<div id="profileContent"></div>
+
+<h3 style="margin:15px 0 10px;">
+    📦 My Orders
+</h3>
+
+<div id="myOrders"></div>
+
+<button
+    class="secondary-btn"
+    type="button"
+    id="logoutBtn">
+
+    Logout
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ADMIN LOGIN -->
+
+<div class="modal" id="adminLoginModal">
+
+<div class="modal-box">
+
+<span class="close" data-close="adminLoginModal">
+    ×
+</span>
+
+<h2>🔐 Admin Login</h2>
+
+<form id="adminLoginForm">
+
+<div class="form-group">
+
+<label>
+    Admin ID
+</label>
+
+<input
+    type="text"
+    id="adminId"
+    placeholder="Enter Admin ID"
+    autocomplete="username"
+    required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    Password
+</label>
+
+<input
+    type="password"
+    id="adminPassword"
+    placeholder="Enter Password"
+    autocomplete="current-password"
+    required>
+
+</div>
+
+
+<button class="submit-btn" type="submit">
+
+    Login
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+
+<!-- ADMIN DASHBOARD -->
+
+<div class="modal" id="adminModal">
+
+<div
+    class="modal-box"
+    style="max-width:800px;">
+
+<span class="close" data-close="adminModal">
+    ×
+</span>
+
+<h2>🔐 Admin Dashboard</h2>
+
+
+<div class="profile-box">
+
+    <b>Total Customers:</b>
+
+    <span id="totalCustomers">
+        0
+    </span>
+
+</div>
+
+
+<div class="profile-box">
+
+    <b>Total Orders:</b>
+
+    <span id="totalOrders">
+        0
+    </span>
+
+</div>
+
+
+<h3 style="margin:15px 0 10px;">
+    📦 All Orders
+</h3>
+
+<div id="allOrders"></div>
+
+
+<button
+    class="secondary-btn"
+    type="button"
+    id="adminLogoutBtn">
+
+    Admin Logout
+
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   EMAILJS SETTINGS
+========================= */
+
+/*
+   IMPORTANT:
+
+   নিচের ৩টি জায়গায় EmailJS থেকে পাওয়া
+   নিজের information বসাবে।
+
+   YOUR_PUBLIC_KEY
+   YOUR_SERVICE_ID
+   YOUR_TEMPLATE_ID
+*/
+
+
+const EMAILJS_SERVICE_ID =
+"YOUR_SERVICE_ID";
+
+const EMAILJS_TEMPLATE_ID =
+"YOUR_TEMPLATE_ID";
+
+
+/* =========================
+   PRODUCT LIST
+========================= */
+
+const products = [
+
+{
+    id:1,
+    name:"Product 1",
+    price:500,
+    image:"1788515921_L_1.jpeg"
+},
+
+{
+    id:2,
+    name:"Product 2",
+    price:700,
+    image:"1788516286_L_1.jpeg"
+},
+
+{
+    id:3,
+    name:"Product 3",
+    price:850,
+    image:"1790249695_L_4.jpeg"
+},
+
+{
+    id:4,
+    name:"Product 4",
+    price:950,
+    image:"1789811938_L_9.jpeg"
+},
+
+{
+    id:5,
+    name:"Product 5",
+    price:650,
+    image:"1786431373_L_4.jpeg"
+},
+
+{
+    id:6,
+    name:"Product 6",
+    price:750,
+    image:"1786290399_L_3.jpeg"
+},
+
+{
+    id:7,
+    name:"Product 7",
+    price:900,
+    image:"1783945910_L_2.jpeg"
+},
+
+{
+    id:8,
+    name:"Product 8",
+    price:550,
+    image:"product8.jpg"
+},
+
+{
+    id:9,
+    name:"Product 9",
+    price:600,
+    image:"product9.jpg"
+},
+
+{
+    id:10,
+    name:"Product 10",
+    price:1000,
+    image:"product10.jpg"
+}
+
+];
+
+
+/* =========================
+   STORAGE
+========================= */
+
+let cart =
+JSON.parse(
+    localStorage.getItem("nr_cart") || "[]"
+);
+
+let customer =
+JSON.parse(
+    localStorage.getItem("nr_customer") || "null"
+);
+
+let orders =
+JSON.parse(
+    localStorage.getItem("nr_orders") || "[]"
+);
+
+
+/* =========================
+   STORAGE FUNCTIONS
+========================= */
+
+function saveCart(){
+
+    localStorage.setItem(
+        "nr_cart",
+        JSON.stringify(cart)
+    );
+
+}
+
+
+function saveCustomer(){
+
+    localStorage.setItem(
+        "nr_customer",
+        JSON.stringify(customer)
+    );
+
+}
+
+
+function saveOrders(){
+
+    localStorage.setItem(
+        "nr_orders",
+        JSON.stringify(orders)
+    );
+
+}
+
+
+/* =========================
+   MODAL FUNCTIONS
+========================= */
+
+function openModal(id){
+
+    const modal =
+    document.getElementById(id);
+
+    if(modal){
+
+        modal.classList.add("show");
+
+    }
+
+}
+
+
+function closeModal(id){
+
+    const modal =
+    document.getElementById(id);
+
+    if(modal){
+
+        modal.classList.remove("show");
+
+    }
+
+}
+
+
+/* =========================
+   EMAIL NOTIFICATION
+========================= */
+
+async function sendOrderEmail(orderData){
+
+    try{
+
+        const templateParams = {
+
+            customer_name:
+            orderData.customerName,
+
+            customer_phone:
+            orderData.phone,
+
+            customer_email:
+            orderData.email ||
+            "Not provided",
+
+            customer_address:
+            orderData.address,
+
+            product_name:
+            orderData.product,
+
+            product_price:
+            "৳" + orderData.price,
+
+            quantity:
+            orderData.quantity,
+
+            total_price:
+            "৳" + orderData.total,
+
+            order_status:
+            orderData.status,
+
+            order_date:
+            orderData.date
+
+        };
+
+
+        await emailjs.send(
+            EMAILJS_SERVICE_ID,
+            EMAILJS_TEMPLATE_ID,
+            templateParams
+        );
+
+
+        console.log(
+            "Order email sent successfully."
+        );
+
+
+        return true;
+
+    }catch(error){
+
+        console.error(
+            "EmailJS Error:",
+            error
+        );
+
+
+        return false;
+
+    }
+
+}
+
+
+/* =========================
+   PRODUCTS
+========================= */
+
+function renderProducts(){
+
+    const container =
+    document.getElementById(
+        "productContainer"
+    );
+
+    container.innerHTML = "";
+
+
+    products.forEach(product => {
+
+        const div =
+        document.createElement("div");
+
+        div.className = "product";
+
+
+        div.innerHTML = `
+
+        <img
+            src="${product.image}"
+            alt="${product.name}"
+            onerror="this.src='https://via.placeholder.com/400x400?text=NR+SHOP'">
+
+        <div class="product-info">
+
+            <div class="product-name">
+                ${product.name}
+            </div>
+
+            <div class="price">
+                ৳${product.price}
+            </div>
+
+            <div class="product-buttons">
+
+                <button
+                    type="button"
+                    class="add-btn"
+                    data-add="${product.id}">
+
+                    Add To Cart
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="order-btn"
+                    data-order="${product.id}">
+
+                    Order Now
+
+                </button>
+
+            </div>
+
+        </div>
+
+        `;
+
+
+        container.appendChild(div);
+
+    });
+
+
+    document
+    .querySelectorAll("[data-add]")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            function(){
+
+                const id =
+                Number(this.dataset.add);
+
+                addToCart(id);
+
+            }
+        );
+
+    });
+
+
+    document
+    .querySelectorAll("[data-order]")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            function(){
+
+                const id =
+                Number(this.dataset.order);
+
+                openOrderForm(id);
+
+            }
+        );
+
+    });
+
+}
+
+
+/* =========================
+   CART
+========================= */
+
+function addToCart(productId){
+
+    const product =
+    products.find(
+        p => p.id === productId
+    );
+
+    if(!product) return;
+
+
+    const existing =
+    cart.find(
+        item => item.id === productId
+    );
+
+
+    if(existing){
+
+        existing.quantity++;
+
+    }else{
+
+        cart.push({
+
+            id:product.id,
+
+            name:product.name,
+
+            price:product.price,
+
+            image:product.image,
+
+            quantity:1
+
+        });
+
+    }
+
+
+    saveCart();
+
+    updateCartCount();
+
+
+    alert(
+        product.name +
+        " added to cart!"
+    );
+
+}
+
+
+function updateCartCount(){
+
+    const count =
+    cart.reduce(
+        (sum,item) =>
+        sum + item.quantity,
+        0
+    );
+
+
+    document.getElementById(
+        "cartCount"
+    ).textContent = count;
+
+}
+
+
+function renderCart(){
+
+    const container =
+    document.getElementById(
+        "cartItems"
+    );
+
+    container.innerHTML = "";
+
+
+    if(cart.length === 0){
+
+        container.innerHTML =
+        "<p style='text-align:center;padding:20px;'>Cart is empty.</p>";
+
+        document.getElementById(
+            "cartTotal"
+        ).textContent = "0";
+
+        return;
+
+    }
+
+
+    let total = 0;
+
+
+    cart.forEach(item => {
+
+        total +=
+        item.price *
+        item.quantity;
+
+
+        const div =
+        document.createElement("div");
+
+        div.className = "cart-item";
+
+
+        div.innerHTML = `
+
+        <img
+            src="${item.image}"
+            onerror="this.src='https://via.placeholder.com/100?text=NR'">
+
+        <div class="cart-info">
+
+            <b>${item.name}</b>
+
+            <div>
+                ৳${item.price}
+            </div>
+
+            <div class="qty-buttons">
+
+                <button
+                    type="button"
+                    data-minus="${item.id}">
+
+                    −
+
+                </button>
+
+                <span>
+                    ${item.quantity}
+                </span>
+
+                <button
+                    type="button"
+                    data-plus="${item.id}">
+
+                    +
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="remove-btn"
+            data-remove="${item.id}">
+
+            Remove
+
+        </button>
+
+        `;
+
+
+        container.appendChild(div);
+
+    });
+
+
+    document.getElementById(
+        "cartTotal"
+    ).textContent = total;
+
+
+    document
+    .querySelectorAll("[data-minus]")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            function(){
+
+                changeQuantity(
+                    Number(
+                        this.dataset.minus
+                    ),
+                    -1
+                );
+
+            }
+        );
+
+    });
+
+
+    document
+    .querySelectorAll("[data-plus]")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            function(){
+
+                changeQuantity(
+                    Number(
+                        this.dataset.plus
+                    ),
+                    1
+                );
+
+            }
+        );
+
+    });
+
+
+    document
+    .querySelectorAll("[data-remove]")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            function(){
+
+                removeFromCart(
+                    Number(
+                        this.dataset.remove
+                    )
+                );
+
+            }
+        );
+
+    });
+
+}
+
+
+function changeQuantity(id,change){
+
+    const item =
+    cart.find(
+        x => x.id === id
+    );
+
+    if(!item) return;
+
+
+    item.quantity += change;
+
+
+    if(item.quantity <= 0){
+
+        cart =
+        cart.filter(
+            x => x.id !== id
+        );
+
+    }
+
+
+    saveCart();
+
+    updateCartCount();
+
+    renderCart();
+
+}
+
+
+function removeFromCart(id){
+
+    cart =
+    cart.filter(
+        item => item.id !== id
+    );
+
+
+    saveCart();
+
+    updateCartCount();
+
+    renderCart();
+
+}
+
+
+/* =========================
+   ORDER NOW
+========================= */
+
+let selectedProduct = null;
+
+
+function openOrderForm(productId){
+
+    selectedProduct =
+    products.find(
+        p => p.id === productId
+    );
+
+
+    if(!selectedProduct) return;
+
+
+    document.getElementById(
+        "orderProduct"
+    ).value =
+    selectedProduct.name;
+
+
+    document.getElementById(
+        "orderPrice"
+    ).value =
+    "৳" + selectedProduct.price;
+
+
+    if(customer){
+
+        document.getElementById(
+            "orderName"
+        ).value =
+        customer.name || "";
+
+
+        document.getElementById(
+            "orderPhone"
+        ).value =
+        customer.phone || "";
+
+
+        document.getElementById(
+            "orderEmail"
+        ).value =
+        customer.email || "";
+
+    }else{
+
+        document.getElementById(
+            "orderName"
+        ).value = "";
+
+
+        document.getElementById(
+            "orderPhone"
+        ).value = "";
+
+
+        document.getElementById(
+            "orderEmail"
+        ).value = "";
+
+    }
+
+
+    document.getElementById(
+        "orderQuantity"
+    ).value = 1;
+
+
+    document.getElementById(
+        "orderAddress"
+    ).value = "";
+
+
+    openModal("orderModal");
+
+}
+
+
+/* =========================
+   ORDER FORM
+========================= */
+
+document
+.getElementById("orderForm")
+.addEventListener(
+    "submit",
+    async function(e){
+
+        e.preventDefault();
+
+
+        const name =
+        document.getElementById(
+            "orderName"
+        ).value.trim();
+
+
+        const phone =
+        document.getElementById(
+            "orderPhone"
+        ).value.trim();
+
+
+        const email =
+        document.getElementById(
+            "orderEmail"
+        ).value.trim();
+
+
+        const address =
+        document.getElementById(
+            "orderAddress"
+        ).value.trim();
+
+
+        const quantity =
+        Number(
+            document.getElementById(
+                "orderQuantity"
+            ).value
+        );
+
+
+        if(
+            !name ||
+            !phone ||
+            !address ||
+            quantity < 1
+        ){
+
+            alert(
+                "Please fill all required details."
+            );
+
+            return;
+
+        }
+
+
+        if(!selectedProduct){
+
+            alert(
+                "Please select a product."
+            );
+
+            return;
+
+        }
+
+
+        const order = {
+
+            id:Date.now(),
+
+            customerName:name,
+
+            phone:phone,
+
+            email:email,
+
+            address:address,
+
+            product:
+            selectedProduct.name,
+
+            productId:
+            selectedProduct.id,
+
+            price:
+            selectedProduct.price,
+
+            quantity:quantity,
+
+            total:
+            selectedProduct.price *
+            quantity,
+
+            status:"Pending",
+
+            date:
+            new Date().toLocaleString()
+
+        };
+
+
+        /* SAVE ORDER FIRST */
+
+        orders.push(order);
+
+        saveOrders();
+
+
+        /* SAVE CUSTOMER */
+
+        customer = {
+
+            name:name,
+
+            phone:phone,
+
+            email:email
+
+        };
+
+
+        saveCustomer();
+
+        updateCustomerName();
+
+
+        closeModal("orderModal");
+
+        document
+        .getElementById("orderForm")
+        .reset();
+
+
+        alert(
+            "Order submitted successfully! " +
+            "We will contact you soon."
+        );
+
+
+        /* SEND EMAIL AFTER ORDER SAVED */
+
+        const emailSent =
+        await sendOrderEmail(order);
+
+
+        if(emailSent){
+
+            console.log(
+                "NR SHOP order notification sent."
+            );
+
+        }else{
+
+            console.log(
+                "Order saved, but email could not be sent."
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================
+   CUSTOMER LOGIN
+========================= */
+
+document
+.getElementById("loginBtn")
+.addEventListener(
+    "click",
+    function(){
+
+        if(customer){
+
+            openProfile();
+
+        }else{
+
+            openModal("loginModal");
+
+        }
+
+    }
+);
+
+
+document
+.getElementById("loginForm")
+.addEventListener(
+    "submit",
+    function(e){
+
+        e.preventDefault();
+
+
+        customer = {
+
+            name:
+            document.getElementById(
+                "customerName"
+            ).value.trim(),
+
+            phone:
+            document.getElementById(
+                "customerPhone"
+            ).value.trim(),
+
+            email:
+            document.getElementById(
+                "customerEmail"
+            ).value.trim()
+
+        };
+
+
+        saveCustomer();
+
+        updateCustomerName();
+
+        closeModal("loginModal");
+
+
+        alert(
+            "Profile saved successfully!"
+        );
+
+    }
+);
+
+
+function updateCustomerName(){
+
+    const display =
+    document.getElementById(
+        "customerNameDisplay"
+    );
+
+
+    if(customer){
+
+        display.textContent =
+        "Hi, " + customer.name;
+
+    }else{
+
+        display.textContent =
+        "Guest";
+
+    }
+
+}
+
+
+/* =========================
+   PROFILE
+========================= */
+
+document
+.getElementById("profileBtn")
+.addEventListener(
+    "click",
+    function(){
+
+        openProfile();
+
+    }
+);
+
+
+function openProfile(){
+
+    if(!customer){
+
+        openModal("loginModal");
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "profileContent"
+    ).innerHTML = `
+
+        <div class="profile-box">
+
+            <b>Name:</b>
+            ${customer.name}
+
+        </div>
+
+        <div class="profile-box">
+
+            <b>Phone:</b>
+            ${customer.phone}
+
+        </div>
+
+        <div class="profile-box">
+
+            <b>Email:</b>
+            ${customer.email || "Not added"}
+
+        </div>
+
+    `;
+
+
+    const myOrders =
+    document.getElementById(
+        "myOrders"
+    );
+
+
+    const customerOrders =
+    orders.filter(
+        order =>
+        order.phone === customer.phone
+    );
+
+
+    if(customerOrders.length === 0){
+
+        myOrders.innerHTML =
+        "<p>No orders yet.</p>";
+
+    }else{
+
+        myOrders.innerHTML = "";
+
+
+        customerOrders
+        .slice()
+        .reverse()
+        .forEach(order => {
+
+            const div =
+            document.createElement("div");
+
+            div.className =
+            "order-card";
+
+
+            div.innerHTML = `
+
+                <b>
+                    ${order.product}
+                </b>
+
+                <p>
+                    Quantity:
+                    ${order.quantity}
+                </p>
+
+                <p>
+                    Total:
+                    ৳${order.total}
+                </p>
+
+                <p>
+                    Date:
+                    ${order.date}
+                </p>
+
+                <span class="status">
+                    ${order.status}
+                </span>
+
+            `;
+
+
+            myOrders.appendChild(div);
+
+        });
+
+    }
+
+
+    openModal("profileModal");
+
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+document
+.getElementById("logoutBtn")
+.addEventListener(
+    "click",
+    function(){
+
+        customer = null;
+
+        localStorage.removeItem(
+            "nr_customer"
+        );
+
+        updateCustomerName();
+
+        closeModal("profileModal");
+
+
+        alert(
+            "Logged out."
+        );
+
+    }
+);
+
+
+/* =========================
+   CART BUTTON
+========================= */
+
+document
+.getElementById("cartBtn")
+.addEventListener(
+    "click",
+    function(){
+
+        renderCart();
+
+        openModal("cartModal");
+
+    }
+);
+
+
+/* =========================
+   ORDER CART
+========================= */
+
+document
+.getElementById("cartOrderBtn")
+.addEventListener(
+    "click",
+    async function(){
+
+        if(cart.length === 0){
+
+            alert(
+                "Your cart is empty."
+            );
+
+            return;
+
+        }
+
+
+        if(!customer){
+
+            closeModal("cartModal");
+
+            openModal("loginModal");
+
+
+            alert(
+                "Please login first to order from cart."
+            );
+
+            return;
+
+        }
+
+
+        const orderDate =
+        new Date().toLocaleString();
+
+
+        /*
+           Create separate orders
+           for each cart product.
+        */
+
+        const cartOrders = [];
+
+
+        cart.forEach(item => {
+
+            const newOrder = {
+
+                id:
+                Date.now() +
+                Math.random(),
+
+                customerName:
+                customer.name,
+
+                phone:
+                customer.phone,
+
+                email:
+                customer.email,
+
+                address:
+                "Will provide by phone",
+
+                product:
+                item.name,
+
+                productId:
+                item.id,
+
+                price:
+                item.price,
+
+                quantity:
+                item.quantity,
+
+                total:
+                item.price *
+                item.quantity,
+
+                status:
+                "Pending",
+
+                date:
+                orderDate
+
+            };
+
+
+            orders.push(newOrder);
+
+            cartOrders.push(newOrder);
+
+        });
+
+
+        /* SAVE ORDERS */
+
+        saveOrders();
+
+
+        /* CLEAR CART */
+
+        cart = [];
+
+        saveCart();
+
+        updateCartCount();
+
+        renderCart();
+
+        closeModal("cartModal");
+
+
+        alert(
+            "Cart order submitted successfully!"
+        );
+
+
+        /* =========================
+           SEND EMAIL NOTIFICATION
+        ========================= */
+
+
+        let productList = "";
+
+        let grandTotal = 0;
+
+
+        cartOrders.forEach(order => {
+
+            productList +=
+            order.product +
+            " × " +
+            order.quantity +
+            " = ৳" +
+            order.total +
+            "\n";
+
+
+            grandTotal +=
+            order.total;
+
+        });
+
+
+        try{
+
+            const templateParams = {
+
+                customer_name:
+                customer.name,
+
+                customer_phone:
+                customer.phone,
+
+                customer_email:
+                customer.email ||
+                "Not provided",
+
+                customer_address:
+                "Will provide by phone",
+
+                product_name:
+                productList,
+
+                product_price:
+                "Multiple products",
+
+                quantity:
+                "Multiple",
+
+                total_price:
+                "৳" + grandTotal,
+
+                order_status:
+                "Pending",
+
+                order_date:
+                orderDate
+
+            };
+
+
+            await emailjs.send(
+
+                EMAILJS_SERVICE_ID,
+
+                EMAILJS_TEMPLATE_ID,
+
+                templateParams
+
+            );
+
+
+            console.log(
+                "Cart order email sent successfully."
+            );
+
+
+        }catch(error){
+
+            console.error(
+                "Cart EmailJS Error:",
+                error
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================
+   ADMIN LOGIN
+========================= */
+
+document
+.getElementById("adminLoginBtn")
+.addEventListener(
+    "click",
+    function(){
+
+        openModal(
+            "adminLoginModal"
+        );
+
+    }
+);
+
+
+document
+.getElementById("adminLoginForm")
+.addEventListener(
+    "submit",
+    function(e){
+
+        e.preventDefault();
+
+
+        const id =
+        document.getElementById(
+            "adminId"
+        ).value.trim();
+
+
+        const password =
+        document.getElementById(
+            "adminPassword"
+        ).value;
+
+
+        /*
+           CURRENT ADMIN LOGIN
+
+           ID:
+           admin
+
+           Password:
+           NR@2026
+
+           NOTE:
+           এটি শুধু temporary/demo system.
+           Real security-এর জন্য Firebase
+           Authentication ব্যবহার করতে হবে।
+        */
+
+
+        if(
+            id === "admin" &&
+            password === "NR@2026"
+        ){
+
+            closeModal(
+                "adminLoginModal"
+            );
+
+            openAdminDashboard();
+
+        }else{
+
+            alert(
+                "Wrong Admin ID or Password."
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================
+   ADMIN DASHBOARD
+========================= */
+
+function openAdminDashboard(){
+
+    document.getElementById(
+        "totalOrders"
+    ).textContent =
+    orders.length;
+
+
+    const phones =
+    [
+        ...new Set(
+            orders.map(
+                order => order.phone
+            )
+        )
+    ];
+
+
+    document.getElementById(
+        "totalCustomers"
+    ).textContent =
+    phones.length;
+
+
+    renderAdminOrders();
+
+    openModal(
+        "adminModal"
+    );
+
+}
+
+
+/* =========================
+   ADMIN ORDERS
+========================= */
+
+function renderAdminOrders(){
+
+    const container =
+    document.getElementById(
+        "allOrders"
+    );
+
+
+    container.innerHTML = "";
+
+
+    if(orders.length === 0){
+
+        container.innerHTML =
+        "<p>No orders yet.</p>";
+
+        return;
+
+    }
+
+
+    orders
+    .slice()
+    .reverse()
+    .forEach(order => {
+
+        const div =
+        document.createElement(
+            "div"
+        );
+
+        div.className =
+        "admin-order";
+
+
+        div.innerHTML = `
+
+            <h4>
+                📦 ${order.product}
+            </h4>
+
+            <p>
+                <b>Customer:</b>
+                ${order.customerName}
+            </p>
+
+            <p>
+                <b>Phone:</b>
+                ${order.phone}
+            </p>
+
+            <p>
+                <b>Email:</b>
+                ${order.email || "Not provided"}
+            </p>
+
+            <p>
+                <b>Address:</b>
+                ${order.address}
+            </p>
+
+            <p>
+                <b>Quantity:</b>
+                ${order.quantity}
+            </p>
+
+            <p>
+                <b>Total:</b>
+                ৳${order.total}
+            </p>
+
+            <p>
+                <b>Date:</b>
+                ${order.date}
+            </p>
+
+            <label>
+                <b>Status:</b>
+            </label>
+
+            <select data-status="${order.id}">
+
+                <option
+                    ${order.status === "Pending"
+                    ? "selected"
+                    : ""}>
+                    Pending
+                </option>
+
+                <option
+                    ${order.status === "Confirmed"
+                    ? "selected"
+                    : ""}>
+                    Confirmed
+                </option>
+
+                <option
+                    ${order.status === "Processing"
+                    ? "selected"
+                    : ""}>
+                    Processing
+                </option>
+
+                <option
+                    ${order.status === "Delivered"
+                    ? "selected"
+                    : ""}>
+                    Delivered
+                </option>
+
+                <option
+                    ${order.status === "Cancelled"
+                    ? "selected"
+                    : ""}>
+                    Cancelled
+                </option>
+
+            </select>
+
+        `;
+
+
+        container.appendChild(div);
+
+    });
+
+
+    document
+    .querySelectorAll("[data-status]")
+    .forEach(select => {
+
+        select.addEventListener(
+            "change",
+            function(){
+
+                const id =
+                Number(
+                    this.dataset.status
+                );
+
+
+                const order =
+                orders.find(
+                    o => o.id === id
+                );
+
+
+                if(order){
+
+                    order.status =
+                    this.value;
+
+                    saveOrders();
+
+
+                    alert(
+                        "Order status updated."
+                    );
+
+                }
+
+            }
+        );
+
+    });
+
+}
+
+
+/* =========================
+   ADMIN LOGOUT
+========================= */
+
+document
+.getElementById("adminLogoutBtn")
+.addEventListener(
+    "click",
+    function(){
+
+        closeModal(
+            "adminModal"
+        );
+
+    }
+);
+
+
+/* =========================
+   CLOSE BUTTONS
+========================= */
+
+document
+.querySelectorAll("[data-close]")
+.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        function(){
+
+            closeModal(
+                this.dataset.close
+            );
+
+        }
+    );
+
+});
+
+
+/* =========================
+   CLICK OUTSIDE MODAL
+========================= */
+
+document
+.querySelectorAll(".modal")
+.forEach(modal => {
+
+    modal.addEventListener(
+        "click",
+        function(e){
+
+            if(e.target === this){
+
+                this.classList.remove(
+                    "show"
+                );
+
+            }
+
+        }
+    );
+
+});
+
+
+/* =========================
+   INITIAL LOAD
+========================= */
+
+renderProducts();
+
+updateCartCount();
+
+updateCustomerName();
+
+</script>
+
+</body>
+</html>
